@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h2>Guess the Numbers between 1 t0 100...
+    </h2>
+    <div id="container">
+        <input type="number" id="userInput" placeholder="enter the number" />
+        <button id="submit-input" onClick="guesGame()"> submit </button>
+        <h4 id="display-result">
+            message:
+        </h4>
+        <h3 id="score">
+            score:
+        </h3>
+
+    </div>
+    <script>
+        let randomNumber = Math.trunc(Math.random() * 10) + 1;
+
+        var score = 10;
+        function guesGame() {
+            var userInputs = document.getElementById("userInput").value;
+            if (score == 0) {
+                document.getElementById("display-result").innerHTML = "message:reach the score"
+
+            }
+
+            if (randomNumber == userInputs) {
+                score = score + 1;
+                document.getElementById("display-result").innerHTML = "message :winner";
+                document.getElementById("score").innerHTML = `score:${score}`;
+
+
+            } else if (userInputs < randomNumber) {
+                score = score - 1;
+                document.getElementById("display-result").innerHTML = "message:you lose";
+                document.getElementById("score").innerHTML = `score:${score}`;
+
+            } else if (userInputs > randomNumber) {
+                score = score - 1;
+                document.getElementById("display-result").innerHTML = "message:you lose";
+                document.getElementById("score").innerHTML = `score:${score}`;
+
+
+            }
+            else {
+                document.getElementById("display-result").innerHTML = "message:try to play the next chance";
+
+            }
+
+        }
+
+        console.log(randomNumber);
+
+    </script>
+</body>
+
+</html>
